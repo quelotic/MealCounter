@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Subscription Meal Counter</string>
+    <string name="notification_body">Χρεώθηκες γεύμα από το μαγειρείο σήμερα;</string>
+    <string name="usage">Επέλεξε την επιθυμητή ώρα που θέλεις να λαμβάνεις την ειδοποίηση καθημερινά και πάτησε \"εφαρμογή\".</string>
+    <string name="apply_button">ΕΦΑΡΜΟΓΗ</string>
+</resources>
