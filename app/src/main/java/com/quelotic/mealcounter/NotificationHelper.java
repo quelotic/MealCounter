@@ -11,7 +11,7 @@ import android.support.v4.app.NotificationCompat;
 class NotificationHelper extends ContextWrapper {
 
     private NotificationManager notificationManager;
-    public static final String CHANNEL_ID = "com.quelotic.subscriptionmealcounter.channel";
+    public static final String CHANNEL_ID = "com.quelotic.mealcounter.channel";
     public static final String CHANNEL_NAME = "Subscription Meal Counter";
 
     public NotificationHelper(Context base) {

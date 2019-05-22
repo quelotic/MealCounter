@@ -1,39 +1,41 @@
 package com.quelotic.mealcounter;
 
-import android.support.v4.app.NotificationCompat;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TimePicker;
 
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity {
 
-    private static final int notificationID = 101;
-    private TimePicker timePicker;
-    private NotificationHelper notificationHelper;
+    TimePicker timePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         timePicker = findViewById(R.id.timePicker);
-        timePicker.setIs24HourView(true);
+        //timePicker.setIs24HourView(true);
 
-        notificationHelper = new NotificationHelper(this);
-
-    }
-
-    //Post the notifications
-    public void postNotification(int id) {
-        NotificationCompat.Builder notificationBuilder = notificationHelper.getNotification(getString(R.string.app_name), getString(R.string.notification_body));
-        if (notificationBuilder != null) {
-            notificationHelper.notify(id, notificationBuilder);
-        }
     }
 
     // Button click
     public void setButton(View view) {
-        postNotification(notificationID);
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, timePicker.getHour());
+        calendar.set(Calendar.MINUTE, timePicker.getMinute());
+        //calendar.set(Calendar.SECOND, 00);
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+        am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+
     }
 }
