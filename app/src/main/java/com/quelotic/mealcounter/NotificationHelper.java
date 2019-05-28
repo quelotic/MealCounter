@@ -38,13 +38,13 @@ class NotificationHelper extends ContextWrapper {
         String no = "noUpdate";
 
         Intent yesBroadcastIntent = new Intent(this, NotificationReceiver.class);
-        yesBroadcastIntent.setAction(NotificationReceiver.YESACTION);
+        yesBroadcastIntent.setAction(NotificationReceiver.YES);
         PendingIntent yesActionIntent = PendingIntent.getBroadcast(this,
                 0, yesBroadcastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Intent noBroadcastIntent = new Intent(this, NotificationReceiver.class);
         //noBroadcastIntent.putExtra("negative", no);
-        noBroadcastIntent.setAction(NotificationReceiver.NOACTION);
+        noBroadcastIntent.setAction(NotificationReceiver.NO);
         PendingIntent noActionIntent = PendingIntent.getBroadcast(this,
                 0, noBroadcastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 

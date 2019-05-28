@@ -4,4 +4,6 @@
     <string name="usage">Επέλεξε την επιθυμητή ώρα που θέλεις να λαμβάνεις την ειδοποίηση καθημερινά και πάτησε \"εφαρμογή\".</string>
     <string name="apply_button">ΕΦΑΡΜΟΓΗ</string>
     <string name="check_button">ΕΛΕΓΧΟΣ</string>
+    <string name="logButton">ΙΣΤΟΡΙΚΟ</string>
+    <string name="closeLogBtn">ΚΛΕΙΣΙΜΟ</string>
 </resources>

@@ -18,22 +18,23 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<Meal> meals = new ArrayList<>();
-
     private TimePicker timePicker;
-    private RecyclerView recyclerView;
-    private MealsAdapter mAdapter;
-    protected LinearLayoutManager layoutManager;
+    final static String filename = "data";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,47 +49,6 @@ public class MainActivity extends AppCompatActivity {
         timePicker.setHour(sharedPref.getInt("HOUR", 0));
         timePicker.setMinute(sharedPref.getInt("MIN", 0));
 
-        recyclerView = findViewById(R.id.rview);
-
-        layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        layoutManager.setStackFromEnd(true);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(this,
-                DividerItemDecoration.VERTICAL));
-        mAdapter = new MealsAdapter(meals);
-        recyclerView.setAdapter(mAdapter);
-
-        populateMealsDetails();
-        mAdapter.notifyDataSetChanged();
-
-    }
-
-    private void populateMealsDetails() {
-
-        InputStream inputStream = getResources().openRawResource(R.raw.data);
-        BufferedReader reader = new BufferedReader(
-                new InputStreamReader(inputStream, Charset.forName("UTF-8"))
-        );
-
-        String line = "";
-
-        try {
-            while ((line = reader.readLine()) != null) {
-                // Split by commas
-                String[] tokens = line.split(",");
-                // Read the data
-                Meal meal = new Meal();
-                meal.setId(Integer.parseInt(tokens[0]));
-                meal.setDate(tokens[1]);
-                meal.setPlates(Integer.parseInt(tokens[2]));
-                meals.add(meal);
-            }
-        } catch (IOException e) {
-            Log.wtf("MealCounter", "Error reading data file on line: " + line, e);
-            e.printStackTrace();
-        }
     }
 
     // Apply button click
@@ -116,8 +76,33 @@ public class MainActivity extends AppCompatActivity {
 
     public void checkButton(View view) {
 
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        Toast.makeText(this, "Η ώρα ειδοποίησης είναι: " + sharedPref.getInt("HOUR", 0) + ":" + sharedPref.getInt("MIN", 0), Toast.LENGTH_SHORT).show();
+//        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+//        Toast.makeText(this, "Η ώρα ειδοποίησης είναι: " + sharedPref.getInt("HOUR", 0) + ":" + sharedPref.getInt("MIN", 0), Toast.LENGTH_SHORT).show();
 
+        try {
+            int plates = 0;
+            File file = new File(getFilesDir(), filename);
+
+            if (file.exists()) {
+                FileInputStream fileInputStream = openFileInput(filename);
+                InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+
+                while (bufferedReader.readLine() != null) plates++;
+                bufferedReader.close();
+            }
+
+            Toast.makeText(getBaseContext(), "Έχεις φάει " + plates + " γεύματα! " + (30-plates) + " ακόμη διαθέσιμα!", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(this, "Πρόβλημα!", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+
+    }
+
+    public void logButton(View view) {
+        LogDialog logDialog = new LogDialog();
+        logDialog.show(getSupportFragmentManager(), "log_dialog");
     }
 }
