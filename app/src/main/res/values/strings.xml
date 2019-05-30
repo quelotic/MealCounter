@@ -6,4 +6,5 @@
     <string name="check_button">ΕΛΕΓΧΟΣ</string>
     <string name="logButton">ΙΣΤΟΡΙΚΟ</string>
     <string name="closeLogBtn">ΚΛΕΙΣΙΜΟ</string>
+    <string name="logoDescription">Meal Counter Logo</string>
 </resources>

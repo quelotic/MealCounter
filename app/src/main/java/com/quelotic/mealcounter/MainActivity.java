@@ -2,37 +2,30 @@ package com.quelotic.mealcounter;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.gigamole.navigationtabstrip.NavigationTabStrip;
+
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
+
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private NavigationTabStrip navigationTabStrip;
     private TimePicker timePicker;
     final static String filename = "data";
 
@@ -49,6 +42,16 @@ public class MainActivity extends AppCompatActivity {
         timePicker.setHour(sharedPref.getInt("HOUR", 0));
         timePicker.setMinute(sharedPref.getInt("MIN", 0));
 
+        // NAVIGATION TAB STRIP
+        navigationTabStrip = findViewById(R.id.navTabStrip);
+        navigationTabStrip.setTitles("ΑΡΧΙΚΗ", "ΡΥΘΜΙΣΗ", "ΙΣΤΟΡΙΚΟ");
+        navigationTabStrip.setTabIndex(0, true);
+        navigationTabStrip.setStripType(NavigationTabStrip.StripType.POINT);
+        navigationTabStrip.setStripGravity(NavigationTabStrip.StripGravity.TOP);
+        //navigationTabStrip.setTypeface("fonts/typeface.ttf");
+        navigationTabStrip.setAnimationDuration(500);
+        //navigationTabStrip.setOnPageChangeListener();
+        //navigationTabStrip.setOnTabStripSelectedIndexListener(...);
     }
 
     // Apply button click
@@ -76,9 +79,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void checkButton(View view) {
 
-//        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-//        Toast.makeText(this, "Η ώρα ειδοποίησης είναι: " + sharedPref.getInt("HOUR", 0) + ":" + sharedPref.getInt("MIN", 0), Toast.LENGTH_SHORT).show();
-
         try {
             int plates = 0;
             File file = new File(getFilesDir(), filename);
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 bufferedReader.close();
             }
 
-            Toast.makeText(getBaseContext(), "Έχεις φάει " + plates + " γεύματα! " + (30-plates) + " ακόμη διαθέσιμα!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), "Έχεις φάει " + plates + " γεύματα! " + (30 - plates) + " ακόμη διαθέσιμα!", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             Toast.makeText(this, "Πρόβλημα!", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
@@ -105,4 +105,5 @@ public class MainActivity extends AppCompatActivity {
         LogDialog logDialog = new LogDialog();
         logDialog.show(getSupportFragmentManager(), "log_dialog");
     }
+
 }

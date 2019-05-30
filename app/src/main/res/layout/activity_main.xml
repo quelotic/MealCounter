@@ -1,29 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#ff1a1e23"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo"
+        android:contentDescription="@string/logoDescription" />
 
     <TextView
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="cursive"
         android:text="@string/app_name"
         android:textAlignment="center"
+        android:textColor="#81ffffff"
         android:textSize="36sp"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/logo" />
 
     <TimePicker
         android:id="@+id/timePicker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/header"
-        android:timePickerMode="clock"/>
+        android:timePickerMode="clock"
+        app:layout_constraintTop_toBottomOf="@id/header" />
 
     <TextView
         android:id="@+id/informationTextView"
@@ -34,8 +50,9 @@
         android:paddingHorizontal="30dp"
         android:text="@string/usage"
         android:textAlignment="center"
+        android:textColor="#81ffffff"
         android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@+id/timePicker" />
+        app:layout_constraintTop_toBottomOf="@id/timePicker" />
 
     <LinearLayout
         android:id="@+id/buttons"
@@ -45,7 +62,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/navTabStrip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/informationTextView">
@@ -82,10 +99,24 @@
 
     </LinearLayout>
 
+    <com.gigamole.navigationtabstrip.NavigationTabStrip
+        android:id="@+id/navTabStrip"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:nts_active_color="#fff"
+        app:nts_color="#ff1748"
+        app:nts_corners_radius="3dp"
+        app:nts_inactive_color="#81ffffff"
+        app:nts_size="15sp"
+        app:nts_weight="5dp"
+        android:background="#ff1a1e23"/>
+
     <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:id="@+id/rview"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--app:layout_constraintBottom_toBottomOf="@id/constraintLayout"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/buttons" />-->
+    <!--android:id="@+id/rview"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--app:layout_constraintBottom_toBottomOf="@id/constraintLayout"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/buttons" />-->
 </android.support.constraint.ConstraintLayout>
