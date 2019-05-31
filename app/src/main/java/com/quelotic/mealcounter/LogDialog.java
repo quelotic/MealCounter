@@ -50,27 +50,27 @@ public class LogDialog extends AppCompatDialogFragment {
     }
     private void populateMealsDetails() {
 
-        InputStream inputStream = getResources().openRawResource(R.raw.data);
-        BufferedReader reader = new BufferedReader(
-                new InputStreamReader(inputStream, Charset.forName("UTF-8"))
-        );
-
-        String line = "";
-
-        try {
-            while ((line = reader.readLine()) != null) {
-                // Split by commas
-                String[] tokens = line.split(",");
-                // Read the data
-                Meal meal = new Meal();
-                meal.setId(Integer.parseInt(tokens[0]));
-                meal.setDate(tokens[1]);
-                meal.setPlates(Integer.parseInt(tokens[2]));
-                meals.add(meal);
-            }
-        } catch (IOException e) {
-            Log.wtf("MealCounter", "Error reading data file on line: " + line, e);
-            e.printStackTrace();
-        }
+//        InputStream inputStream = getResources().openRawResource(R.raw.data);
+//        BufferedReader reader = new BufferedReader(
+//                new InputStreamReader(inputStream, Charset.forName("UTF-8"))
+//        );
+//
+//        String line = "";
+//
+//        try {
+//            while ((line = reader.readLine()) != null) {
+//                // Split by commas
+//                String[] tokens = line.split(",");
+//                // Read the data
+//                Meal meal = new Meal();
+//                meal.setId(Integer.parseInt(tokens[0]));
+//                meal.setDate(tokens[1]);
+//                meal.setPlates(Integer.parseInt(tokens[2]));
+//                meals.add(meal);
+//            }
+//        } catch (IOException e) {
+//            Log.wtf("MealCounter", "Error reading data file on line: " + line, e);
+//            e.printStackTrace();
+//        }
     }
 }

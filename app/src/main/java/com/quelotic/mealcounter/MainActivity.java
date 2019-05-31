@@ -6,7 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +25,7 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ViewPager viewPager;
     private NavigationTabStrip navigationTabStrip;
     private TimePicker timePicker;
     final static String filename = "data";
@@ -37,20 +38,33 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        timePicker = findViewById(R.id.timePicker);
-        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
-        timePicker.setHour(sharedPref.getInt("HOUR", 0));
-        timePicker.setMinute(sharedPref.getInt("MIN", 0));
+        initUI();
+        setUI();
+    }
 
-        // NAVIGATION TAB STRIP
+    private void initUI() {
+        viewPager = findViewById(R.id.viewPager);
         navigationTabStrip = findViewById(R.id.navTabStrip);
+        //timePicker = findViewById(R.id.timePicker);
+    }
+
+    private void setUI() {
+
+        // TIME PICKER
+        //SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        //timePicker.setHour(sharedPref.getInt("HOUR", 0));
+        //timePicker.setMinute(sharedPref.getInt("MIN", 0));
+
+        // PAGER
+        viewPager.setAdapter(new com.quelotic.mealcounter.PagerAdapter(getSupportFragmentManager()));
         navigationTabStrip.setTitles("ΑΡΧΙΚΗ", "ΡΥΘΜΙΣΗ", "ΙΣΤΟΡΙΚΟ");
         navigationTabStrip.setTabIndex(0, true);
         navigationTabStrip.setStripType(NavigationTabStrip.StripType.POINT);
         navigationTabStrip.setStripGravity(NavigationTabStrip.StripGravity.TOP);
+        navigationTabStrip.setViewPager(viewPager, 0);
         //navigationTabStrip.setTypeface("fonts/typeface.ttf");
-        navigationTabStrip.setAnimationDuration(500);
-        //navigationTabStrip.setOnPageChangeListener();
+        navigationTabStrip.setAnimationDuration(300);
+        //navigationTabStrip.setOnPageChangeListener(...);
         //navigationTabStrip.setOnTabStripSelectedIndexListener(...);
     }
 

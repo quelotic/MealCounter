@@ -5,6 +5,7 @@
     <string name="apply_button">ΕΦΑΡΜΟΓΗ</string>
     <string name="check_button">ΕΛΕΓΧΟΣ</string>
     <string name="logButton">ΙΣΤΟΡΙΚΟ</string>
-    <string name="closeLogBtn">ΚΛΕΙΣΙΜΟ</string>
+    <string name="close">ΚΛΕΙΣΙΜΟ</string>
     <string name="logoDescription">Meal Counter Logo</string>
+    <string name="info">Καλώς ήρθες φίλε στον καταμετρητή γευμάτων. Πάτα \"ΡΥΘΜΙΣΗ\" για να επιλέξεις την ώρα που θελεις να λαμβάνεις την ειδοποίηση, ή \"ΙΣΤΟΡΙΚΟ\" για να δεις πληροφορίες για τα γεύματα που έχεις καταναλώσει.</string>
 </resources>
