@@ -35,7 +35,16 @@ public class PagerAdapter extends FragmentPagerAdapter {
     // Returns the page title for the top indicator
     @Override
     public CharSequence getPageTitle(int position) {
-        return "Tab " + position;
+        //return "Tab " + position;
+        switch (position) {
+            case 0:
+                return "ΑΡΧΙΚΗ";
+            case 1:
+                return "ΡΥΘΜΙΣΕΙΣ";
+            case 2:
+                return "ΙΣΤΟΡΙΚΟ";
+            default:
+                return "unknown";
+        }
     }
-
 }

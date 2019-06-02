@@ -9,22 +9,37 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_weight="1">
     </android.support.v4.view.ViewPager>
 
-    <com.gigamole.navigationtabstrip.NavigationTabStrip
-        android:id="@+id/navTabStrip"
+    <!--<com.gigamole.navigationtabstrip.NavigationTabStrip-->
+        <!--app:nts_active_color="#fff"-->
+        <!--app:nts_inactive_color="#81ffffff"-->
+        <!--android:background="#ff1a1e23"/>-->
+
+    <com.ogaclejapan.smarttablayout.SmartTabLayout
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_gravity="bottom|center"
-        app:nts_active_color="#fff"
-        app:nts_color="#ff1748"
-        app:nts_corners_radius="3dp"
-        app:nts_inactive_color="#81ffffff"
-        app:nts_size="15sp"
-        app:nts_weight="5dp"
-        android:background="#ff1a1e23"/>
+        android:layout_height="48dp"
+        app:stl_indicatorInterpolation="smart"
+        app:stl_indicatorGravity="top"
+        app:stl_indicatorColor="#ff1748"
+        app:stl_indicatorThickness="4dp"
+        app:stl_indicatorWidth="auto"
+        app:stl_indicatorCornerRadius="2dp"
+        app:stl_dividerColor="#ff1a1e23"
+        app:stl_dividerThickness="0dp"
+        app:stl_defaultTabBackground="?attr/selectableItemBackground"
+        app:stl_defaultTabTextAllCaps="true"
+        app:stl_defaultTabTextColor="#eeeeee"
+        app:stl_defaultTabTextSize="18sp"
+        app:stl_distributeEvenly="true"
+        app:stl_clickable="true"
+        app:stl_drawDecorationAfterTab="false"
+        app:stl_customTabTextLayoutId="@layout/custom_tab"
+        app:stl_customTabTextViewId="@id/customTab"/>
+
 </LinearLayout>
 <!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
     <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->

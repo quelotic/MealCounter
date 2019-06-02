@@ -3,9 +3,11 @@
     <string name="notification_body">Χρεώθηκες γεύμα από το μαγειρείο σήμερα;</string>
     <string name="usage">Επέλεξε την επιθυμητή ώρα που θέλεις να λαμβάνεις την ειδοποίηση καθημερινά και πάτησε \"εφαρμογή\".</string>
     <string name="apply_button">ΕΦΑΡΜΟΓΗ</string>
-    <string name="check_button">ΕΛΕΓΧΟΣ</string>
     <string name="logButton">ΙΣΤΟΡΙΚΟ</string>
     <string name="close">ΚΛΕΙΣΙΜΟ</string>
     <string name="logoDescription">Meal Counter Logo</string>
-    <string name="info">Καλώς ήρθες φίλε στον καταμετρητή γευμάτων. Πάτα \"ΡΥΘΜΙΣΗ\" για να επιλέξεις την ώρα που θελεις να λαμβάνεις την ειδοποίηση, ή \"ΙΣΤΟΡΙΚΟ\" για να δεις πληροφορίες για τα γεύματα που έχεις καταναλώσει.</string>
+    <string name="info">Πάτα \"ΡΥΘΜΙΣΗ\" για να επιλέξεις την ώρα που θελεις να λαμβάνεις την ειδοποίηση\nκαι \"ΙΣΤΟΡΙΚΟ\" για να δεις πληροφορίες για τα γεύματα που έχεις καταναλώσει.</string>
+    <string name="remainingEnd">\ διαθέσιμα γεύματα</string>
+    <string name="remainingStart">Έχεις ακόμη\ \ </string>
+    <string name="deactivate">ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ</string>
 </resources>
