@@ -1,4 +1,4 @@
-package com.quelotic.mealcounter;
+package com.quelotic.mealcounter.fragments;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -6,15 +6,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.quelotic.mealcounter.notifications.AlarmReceiver;
+import com.quelotic.mealcounter.R;
 
 import java.util.Calendar;
 import java.util.Objects;

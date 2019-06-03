@@ -1,7 +1,7 @@
 package com.quelotic.mealcounter;
 
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
 
@@ -23,38 +23,8 @@ public class MainActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPager);
         viewPagerTab = findViewById(R.id.tabs);
 
-        viewPager.setAdapter(new com.quelotic.mealcounter.PagerAdapter(getSupportFragmentManager()));
+        viewPager.setAdapter(new PagerAdapter(getSupportFragmentManager()));
         viewPagerTab.setViewPager(viewPager);
 
     }
-
-//    public void checkButton(View view) {
-//
-//        try {
-//            int plates = 0;
-//            File file = new File(getFilesDir(), filename);
-//
-//            if (file.exists()) {
-//                FileInputStream fileInputStream = openFileInput(filename);
-//                InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
-//                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-//
-//
-//                while (bufferedReader.readLine() != null) plates++;
-//                bufferedReader.close();
-//            }
-//
-//            Toast.makeText(getBaseContext(), "Έχεις φάει " + plates + " γεύματα! " + (30 - plates) + " ακόμη διαθέσιμα!", Toast.LENGTH_SHORT).show();
-//        } catch (Exception e) {
-//            Toast.makeText(this, "Πρόβλημα!", Toast.LENGTH_SHORT).show();
-//            e.printStackTrace();
-//        }
-//
-//    }
-//
-//    public void logButton(View view) {
-//        LogDialog logDialog = new LogDialog();
-//        logDialog.show(getSupportFragmentManager(), "log_dialog");
-//    }
-
 }

@@ -1,4 +1,4 @@
-package com.quelotic.mealcounter;
+package com.quelotic.mealcounter.notifications;
 
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;

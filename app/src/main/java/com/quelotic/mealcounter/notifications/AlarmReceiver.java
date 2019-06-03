@@ -1,10 +1,10 @@
-package com.quelotic.mealcounter;
+package com.quelotic.mealcounter.notifications;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 
 public class AlarmReceiver extends BroadcastReceiver {
 
@@ -21,7 +21,7 @@ public class AlarmReceiver extends BroadcastReceiver {
     }
 
     public void postNotification(int id) {
-        NotificationCompat.Builder notificationBuilder = notificationHelper.getNotification("app_name", "notification_body");
+        NotificationCompat.Builder notificationBuilder = notificationHelper.getNotification("Έφαγες;", "Χόρτασες; Πήρες γεύμα τελικά;");
         if (notificationBuilder != null) {
             notificationHelper.notify(id, notificationBuilder);
         }

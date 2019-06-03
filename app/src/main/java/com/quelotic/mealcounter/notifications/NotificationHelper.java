@@ -1,4 +1,4 @@
-package com.quelotic.mealcounter;
+package com.quelotic.mealcounter.notifications;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -6,9 +6,11 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
-import android.support.v4.app.NotificationCompat;
+import androidx.core.app.NotificationCompat;
 
-class NotificationHelper extends ContextWrapper {
+import com.quelotic.mealcounter.R;
+
+public class NotificationHelper extends ContextWrapper {
 
     private NotificationManager notificationManager;
     public static final String CHANNEL_ID = "com.quelotic.mealcounter.channel";

@@ -1,8 +1,12 @@
 package com.quelotic.mealcounter;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.quelotic.mealcounter.fragments.MainFragment;
+import com.quelotic.mealcounter.fragments.ClockFragment;
+import com.quelotic.mealcounter.fragments.LogFragment;
 
 public class PagerAdapter extends FragmentPagerAdapter {
     private static int NUM_ITEMS = 3;
@@ -26,7 +30,7 @@ public class PagerAdapter extends FragmentPagerAdapter {
             case 1:
                 return new ClockFragment();
             case 2:
-                return new ClockFragment();
+                return new LogFragment();
             default:
                 return null;
         }

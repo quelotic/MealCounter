@@ -10,4 +10,7 @@
     <string name="remainingEnd">\ διαθέσιμα γεύματα</string>
     <string name="remainingStart">Έχεις ακόμη\ \ </string>
     <string name="deactivate">ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ</string>
+    <string name="add">ΠΡΟΣΘΗΚΗ</string>
+    <string name="saved">Το γεύμα προστέθηκε.</string>
+    <string name="notSaved">Παρουσιάστηκε πρόβλημα!</string>
 </resources>

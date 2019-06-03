@@ -6,7 +6,6 @@
     android:background="#ff1a1e23"
     android:textColor="#81ffffff">
 
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,16 +19,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <TimePicker
-            android:id="@+id/timePicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:headerBackground="#ff1a1e23"
-            android:numbersBackgroundColor="#ff363f49"
-            android:numbersSelectorColor="#ff1748"
-            android:numbersTextColor="#eeeeee"
-            android:timePickerMode="clock" />
 
         <TextView
             android:id="@+id/informationTextView"
@@ -45,26 +34,12 @@
             android:textSize="18sp" />
 
         <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
-            android:id="@+id/applyBtn"
+            android:id="@+id/addButton"
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:layout_marginVertical="8dp"
             android:fontFamily="sans-serif-condensed"
-            android:text="@string/apply_button"
-            android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
-            app:spinning_bar_color="#FFF"
-            app:spinning_bar_padding="6dp"
-            app:spinning_bar_width="4dp" />
-
-        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
-            android:id="@+id/deactivateBtn"
-
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:layout_marginVertical="8dp"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/deactivate"
+            android:text="@string/add"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
             app:spinning_bar_color="#FFF"
