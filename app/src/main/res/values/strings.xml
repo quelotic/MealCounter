@@ -13,4 +13,6 @@
     <string name="add">ΠΡΟΣΘΗΚΗ</string>
     <string name="saved">Το γεύμα προστέθηκε.</string>
     <string name="notSaved">Παρουσιάστηκε πρόβλημα!</string>
+    <string name="dateHint">ΗΗ/ΜΜ/ΕΕΕΕ</string>
+    <string name="slash">/</string>
 </resources>

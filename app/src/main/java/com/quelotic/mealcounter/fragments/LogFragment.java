@@ -17,6 +17,8 @@ import com.quelotic.mealcounter.R;
 import com.quelotic.mealcounter.databases.Meal;
 import com.quelotic.mealcounter.databases.MealViewModel;
 
+import java.util.Objects;
+
 import static android.app.Activity.RESULT_OK;
 
 public class LogFragment extends Fragment {
@@ -55,12 +57,12 @@ public class LogFragment extends Fragment {
             mealViewModel.insert(meal);
 
             Toast.makeText(
-                    getActivity().getApplicationContext(),
+                    Objects.requireNonNull(getActivity()).getApplicationContext(),
                     R.string.saved,
                     Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(
-                    getActivity().getApplicationContext(),
+                    Objects.requireNonNull(getActivity()).getApplicationContext(),
                     R.string.notSaved,
                     Toast.LENGTH_LONG).show();
         }
