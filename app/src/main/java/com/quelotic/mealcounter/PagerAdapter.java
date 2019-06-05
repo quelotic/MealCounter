@@ -44,7 +44,7 @@ public class PagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return "ΑΡΧΙΚΗ";
             case 1:
-                return "ΡΥΘΜΙΣΕΙΣ";
+                return "ΡΥΘΜΙΣΗ";
             case 2:
                 return "ΙΣΤΟΡΙΚΟ";
             default:

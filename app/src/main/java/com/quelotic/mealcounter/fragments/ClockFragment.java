@@ -24,9 +24,7 @@ import java.util.Objects;
 
 public class ClockFragment extends Fragment {
 
-    TimePicker timePicker;
-    Button deactivateButton;
-    Button applyButton;
+    private TimePicker timePicker;
 
     @Nullable
     @Override
@@ -39,14 +37,15 @@ public class ClockFragment extends Fragment {
         timePicker.setHour(sharedPref.getInt("HOUR", 0));
         timePicker.setMinute(sharedPref.getInt("MIN", 0));
 
-        deactivateButton = rootView.findViewById(R.id.deactivateBtn);
-        applyButton = rootView.findViewById(R.id.applyBtn);
+        Button deactivateButton = rootView.findViewById(R.id.deactivateBtn);
         deactivateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //TODO
-                Toast.makeText(getActivity(), "Deactivate Button", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Απενεργοποιήθηκε", Toast.LENGTH_SHORT).show();
             }
         });
+
+        Button applyButton = rootView.findViewById(R.id.applyBtn);
         applyButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Calendar now = Calendar.getInstance();
@@ -58,7 +57,7 @@ public class ClockFragment extends Fragment {
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
                 AlarmManager am = (AlarmManager) Objects.requireNonNull(getActivity()).getSystemService(Context.ALARM_SERVICE);
                 am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-                Toast.makeText(getContext(), "Εφαρμόστηκε ώρα ειδοποίησης: " + calendar.getTime(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Έτοιμο", Toast.LENGTH_SHORT).show();
 
                 // Save preference
                 SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
