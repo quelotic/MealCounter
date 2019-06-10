@@ -11,7 +11,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private SmartTabLayout viewPagerTab;
-    final static String filename = "data";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

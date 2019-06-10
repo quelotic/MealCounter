@@ -38,34 +38,33 @@ public class ClockFragment extends Fragment {
         timePicker.setMinute(sharedPref.getInt("MIN", 0));
 
         Button deactivateButton = rootView.findViewById(R.id.deactivateBtn);
-        deactivateButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //TODO
-                Toast.makeText(getActivity(), "Απενεργοποιήθηκε", Toast.LENGTH_SHORT).show();
-            }
+        deactivateButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), AlarmReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            AlarmManager am = (AlarmManager) Objects.requireNonNull(getActivity()).getSystemService(Context.ALARM_SERVICE);
+            am.cancel(pendingIntent);
+            Toast.makeText(getContext(),"Η ειδοποίηση απενεργοποιήθηκε",Toast.LENGTH_SHORT).show();
         });
 
         Button applyButton = rootView.findViewById(R.id.applyBtn);
-        applyButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Calendar now = Calendar.getInstance();
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(Calendar.HOUR_OF_DAY, timePicker.getHour());
-                calendar.set(Calendar.MINUTE, timePicker.getMinute());
-                if (calendar.before(now)) calendar.add(Calendar.DAY_OF_MONTH, 1);
-                Intent intent = new Intent(getContext(), AlarmReceiver.class);
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-                AlarmManager am = (AlarmManager) Objects.requireNonNull(getActivity()).getSystemService(Context.ALARM_SERVICE);
-                am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-                Toast.makeText(getContext(), "Έτοιμο", Toast.LENGTH_SHORT).show();
+        applyButton.setOnClickListener(v -> {
+            Calendar now = Calendar.getInstance();
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.HOUR_OF_DAY, timePicker.getHour());
+            calendar.set(Calendar.MINUTE, timePicker.getMinute());
+            if (calendar.before(now)) calendar.add(Calendar.DAY_OF_MONTH, 1);
+            Intent intent = new Intent(getContext(), AlarmReceiver.class);
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(), 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            AlarmManager am = (AlarmManager) Objects.requireNonNull(getActivity()).getSystemService(Context.ALARM_SERVICE);
+            am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+            Toast.makeText(getContext(), "Έτοιμο", Toast.LENGTH_SHORT).show();
 
-                // Save preference
-                SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putInt("HOUR", timePicker.getHour());
-                editor.putInt("MIN", timePicker.getMinute());
-                editor.apply();
-            }
+            // Save preference
+            SharedPreferences sharedPref1 = getActivity().getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref1.edit();
+            editor.putInt("HOUR", timePicker.getHour());
+            editor.putInt("MIN", timePicker.getMinute());
+            editor.apply();
         });
 
         return rootView;
